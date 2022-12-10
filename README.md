@@ -73,3 +73,36 @@ http_proxy: http://localhost:1087
 ```
 ALL_PROXY=socks5://localhost:1080 brew ...
 ```
+
+## Maven
+
+~/.m2/settings.xml
+
+```xml
+<settings>
+  ...
+  <proxies>
+   <proxy>
+      <id>example-proxy</id>
+      <active>true</active>
+      <!-- 代理协议 -->
+      <protocol>http</protocol>
+      <!-- 代理地址 -->
+      <host>proxy.example.com</host>
+      <!-- 代理端口 -->
+      <port>8080</port>
+      <!-- 如果代理不需要登陆，必须删除 username 和 password -->
+      <username>proxyuser</username>
+      <password>somepassword</password>
+      <!-- 不使用代理的站点，可以删除 -->
+      <nonProxyHosts>www.google.com|*.example.com</nonProxyHosts>
+    </proxy>
+  </proxies>
+  ...
+</settings>
+```
+
+### 参考
+
+- <https://maven.apache.org/guides/mini/guide-proxies.html>
+- <https://stackoverflow.com/questions/1251192/how-do-i-use-maven-through-a-proxy>
